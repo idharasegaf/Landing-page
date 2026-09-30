@@ -1,0 +1,820 @@
+```html
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>T800 Ultra Smartwatch - Performa Layar Lebar & Fitur Lengkap Tanpa Batas</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Plus Jakarta Sans & Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        ultraDark: '#0b0f19',
+                        ultraCard: '#131927',
+                        ultraBorder: 'rgba(249, 115, 22, 0.2)',
+                        ultraOrange: {
+                            400: '#fb923c',
+                            500: '#f97316',
+                            600: '#ea580c',
+                        },
+                        titanium: '#94a3b8',
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'Inter', 'sans-serif'],
+                    },
+                    animation: {
+                        'pulse-glow': 'pulseGlow 2s infinite',
+                        'float': 'float 4s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        pulseGlow: {
+                            '0%, 100%': { boxShadow: '0 0 15px rgba(249, 115, 22, 0.4)' },
+                            '50%': { boxShadow: '0 0 30px rgba(249, 115, 22, 0.8)' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .orange-glow-text {
+            background: linear-gradient(135deg, #ffedd5 0%, #fdba74 40%, #f97316 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .orange-gradient-bg {
+            background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+        }
+        .glass-card {
+            background: rgba(19, 25, 39, 0.75);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .glass-card-orange {
+            background: rgba(249, 115, 22, 0.05);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(249, 115, 22, 0.3);
+        }
+    </style>
+</head>
+<body class="bg-ultraDark text-gray-200 font-sans antialiased selection:bg-ultraOrange-500 selection:text-black">
+
+    <!-- Navbar Header -->
+    <nav class="fixed top-0 left-0 w-full z-50 glass-card border-b border-gray-800/80 transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo -->
+                <a href="#" class="flex items-center space-x-3 group">
+                    <div class="w-10 h-10 rounded-xl orange-gradient-bg flex items-center justify-center text-black font-extrabold text-xl shadow-lg shadow-ultraOrange-500/20 group-hover:scale-105 transition-transform">
+                        <i class="fa-solid fa-stopwatch"></i>
+                    </div>
+                    <span class="text-xl sm:text-2xl font-extrabold tracking-wider text-white">T800 <span class="orange-glow-text">ULTRA</span></span>
+                </a>
+
+                <!-- Desktop Navigation Links -->
+                <div class="hidden lg:flex items-center space-x-8 text-sm font-semibold tracking-wide text-gray-300">
+                    <a href="#fitur" class="hover:text-ultraOrange-500 transition-colors">Fitur Utama</a>
+                    <a href="#desain" class="hover:text-ultraOrange-500 transition-colors">Layar & Warna</a>
+                    <a href="#spesifikasi" class="hover:text-ultraOrange-500 transition-colors">Spesifikasi</a>
+                    <a href="#ulasan" class="hover:text-ultraOrange-500 transition-colors">Testimoni</a>
+                    <a href="#faq" class="hover:text-ultraOrange-500 transition-colors">FAQ</a>
+                </div>
+
+                <!-- Call to Action Button -->
+                <div class="hidden sm:flex items-center space-x-4">
+                    <button onclick="openOrderModal()" class="orange-gradient-bg text-black font-extrabold px-6 py-3 rounded-full text-sm hover:opacity-95 transition-all transform hover:scale-105 animate-pulse-glow flex items-center space-x-2">
+                        <i class="fa-solid fa-cart-shopping text-sm"></i>
+                        <span>Beli Sekarang</span>
+                    </button>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="lg:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-gray-300 hover:text-white p-2 focus:outline-none">
+                        <i class="fa-solid fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="hidden lg:hidden glass-card border-b border-gray-800 px-4 pt-3 pb-6 space-y-3">
+            <a href="#fitur" class="mobile-link block py-2 text-gray-300 hover:text-ultraOrange-500 font-medium">Fitur Utama</a>
+            <a href="#desain" class="mobile-link block py-2 text-gray-300 hover:text-ultraOrange-500 font-medium">Layar & Warna</a>
+            <a href="#spesifikasi" class="mobile-link block py-2 text-gray-300 hover:text-ultraOrange-500 font-medium">Spesifikasi</a>
+            <a href="#ulasan" class="mobile-link block py-2 text-gray-300 hover:text-ultraOrange-500 font-medium">Testimoni</a>
+            <a href="#faq" class="mobile-link block py-2 text-gray-300 hover:text-ultraOrange-500 font-medium">FAQ</a>
+            <button onclick="openOrderModal()" class="w-full text-center orange-gradient-bg text-black font-bold py-3 rounded-xl text-sm mt-2 shadow-lg shadow-ultraOrange-500/20">
+                Pesan Sekarang (Diskon 50%)
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen pt-28 pb-16 overflow-hidden flex items-center justify-center bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-gray-900 via-ultraDark to-black">
+        <!-- Background Glowing Orbs -->
+        <div class="absolute top-1/4 -left-20 w-96 h-96 bg-ultraOrange-500/10 rounded-full blur-[120px] pointer-events-none"></div>
+        <div class="absolute bottom-1/4 -right-20 w-96 h-96 bg-amber-500/10 rounded-full blur-[120px] pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full z-10 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            
+            <!-- Left Hero Text -->
+            <div class="lg:col-span-7 text-center lg:text-left space-y-6">
+                
+                <!-- Badge Best Seller -->
+                <div class="inline-flex items-center space-x-2 border border-ultraOrange-500/30 px-4 py-2 rounded-full bg-ultraOrange-500/10 text-ultraOrange-400 text-xs sm:text-sm font-semibold">
+                    <span class="flex h-2 w-2 rounded-full bg-ultraOrange-500 animate-ping"></span>
+                    <i class="fa-solid fa-fire text-ultraOrange-500"></i>
+                    <span>BEST SELLER 2026 - Garansi Resmi & Bisa COD</span>
+                </div>
+
+                <!-- Main Headline -->
+                <h1 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold leading-tight tracking-tight text-white">
+                    T800 Ultra Smartwatch: <br>
+                    <span class="orange-glow-text">Layar Lebar & Fitur Lengkap</span> Tanpa Batas
+                </h1>
+
+                <!-- Subheadline -->
+                <p class="text-gray-400 text-base sm:text-lg max-w-2xl mx-auto lg:mx-0 font-normal leading-relaxed">
+                    Nikmati kemewahan desain titanium alloy dengan layar jernih <span class="text-white font-semibold">1.99" HD Display</span>, pengisian daya <span class="text-white font-semibold">Wireless Charging</span>, dan kemudahan telepon langsung dari pergelangan tangan Anda.
+                </p>
+
+                <!-- CTA Buttons -->
+                <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-4">
+                    <button onclick="openOrderModal()" class="w-full sm:w-auto orange-gradient-bg text-black font-extrabold px-8 py-4 rounded-xl text-base hover:shadow-2xl hover:shadow-ultraOrange-500/30 transition-all duration-300 transform hover:-translate-y-1 flex items-center justify-center space-x-3">
+                        <i class="fa-solid fa-bolt text-lg"></i>
+                        <span>Pesan Sekarang - Diskon 50%</span>
+                    </button>
+                    <a href="#fitur" class="w-full sm:w-auto border border-gray-700 bg-ultraCard/60 hover:bg-ultraCard text-gray-300 hover:text-white font-semibold px-8 py-4 rounded-xl text-base transition-all duration-300 text-center">
+                        Lihat Fitur Lengkap
+                    </a>
+                </div>
+
+                <!-- Quick Guarantee Badges -->
+                <div class="pt-6 grid grid-cols-3 gap-3 max-w-lg mx-auto lg:mx-0 text-xs sm:text-sm text-gray-400 border-t border-gray-800">
+                    <div class="flex items-center justify-center lg:justify-start space-x-2">
+                        <i class="fa-solid fa-truck-fast text-ultraOrange-500"></i>
+                        <span>Bisa Bayar COD</span>
+                    </div>
+                    <div class="flex items-center justify-center lg:justify-start space-x-2">
+                        <i class="fa-solid fa-shield-halved text-ultraOrange-500"></i>
+                        <span>Garansi 1 Tahun</span>
+                    </div>
+                    <div class="flex items-center justify-center lg:justify-start space-x-2">
+                        <i class="fa-solid fa-rotate-left text-ultraOrange-500"></i>
+                        <span>Retur Mudah</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Hero Product Display -->
+            <div class="lg:col-span-5 relative flex justify-center items-center">
+                <div class="relative w-80 h-80 sm:w-96 sm:h-96 rounded-full border border-ultraOrange-500/20 flex items-center justify-center bg-ultraOrange-500/5 backdrop-blur-xl">
+                    <div class="w-64 h-64 sm:w-80 sm:h-80 rounded-full border border-ultraOrange-500/30 animate-pulse"></div>
+                </div>
+
+                <!-- Watch Hero Photo -->
+                <img id="hero-watch-img" src="https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?q=80&w=700&auto=format&fit=crop" 
+                     alt="T800 Ultra Smartwatch Titanium" 
+                     class="absolute w-72 sm:w-84 h-auto object-cover rounded-3xl shadow-2xl shadow-ultraOrange-500/20 border-2 border-ultraOrange-500/40 animate-float">
+
+                <!-- Floating Badges Around Product -->
+                <div class="absolute -top-2 right-4 glass-card px-3 py-2 rounded-xl text-xs font-semibold text-white flex items-center space-x-2 border border-ultraOrange-500/30 shadow-lg">
+                    <i class="fa-solid fa-expand text-ultraOrange-500"></i>
+                    <span>1.99" HD Display</span>
+                </div>
+
+                <div class="absolute bottom-8 left-0 glass-card px-3 py-2 rounded-xl text-xs font-semibold text-white flex items-center space-x-2 border border-ultraOrange-500/30 shadow-lg">
+                    <i class="fa-solid fa-phone-volume text-ultraOrange-500"></i>
+                    <span>Bluetooth Call</span>
+                </div>
+
+                <div class="absolute top-1/2 -left-6 glass-card px-3 py-2 rounded-xl text-xs font-semibold text-white flex items-center space-x-2 border border-ultraOrange-500/30 shadow-lg hidden sm:flex">
+                    <i class="fa-solid fa-bolt text-ultraOrange-500"></i>
+                    <span>Wireless Charge</span>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Highlights Value Proposition Strip -->
+    <section class="py-6 bg-ultraCard border-y border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+                <div class="flex items-center justify-center space-x-3 p-2">
+                    <i class="fa-solid fa-truck-ramp-box text-2xl text-ultraOrange-500"></i>
+                    <div class="text-left">
+                        <h4 class="text-sm font-bold text-white">Pengiriman Cepat</h4>
+                        <p class="text-xs text-gray-400">COD / Bayar di Tempat</p>
+                    </div>
+                </div>
+                <div class="flex items-center justify-center space-x-3 p-2">
+                    <i class="fa-solid fa-award text-2xl text-ultraOrange-500"></i>
+                    <div class="text-left">
+                        <h4 class="text-sm font-bold text-white">Garansi Resmi</h4>
+                        <p class="text-xs text-gray-400">1 Tahun Jaminan Produk</p>
+                    </div>
+                </div>
+                <div class="flex items-center justify-center space-x-3 p-2">
+                    <i class="fa-solid fa-tags text-2xl text-ultraOrange-500"></i>
+                    <div class="text-left">
+                        <h4 class="text-sm font-bold text-white">Diskon 50% Today</h4>
+                        <p class="text-xs text-gray-400">Harga Promo Terbatas</p>
+                    </div>
+                </div>
+                <div class="flex items-center justify-center space-x-3 p-2">
+                    <i class="fa-solid fa-shield-heart text-2xl text-ultraOrange-500"></i>
+                    <div class="text-left">
+                        <h4 class="text-sm font-bold text-white">100% Original</h4>
+                        <p class="text-xs text-gray-400">Kualitas Premium Titanium</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Features Section -->
+    <section id="fitur" class="py-20 relative bg-ultraDark">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-xs uppercase tracking-widest text-ultraOrange-500 font-extrabold mb-2">Keunggulan Teknologi</h2>
+                <h3 class="text-3xl sm:text-4xl font-extrabold text-white">Kenapa T800 Ultra Pilihan Terbaik?</h3>
+                <p class="text-gray-400 text-sm sm:text-base mt-3">Dirancang khusus untuk mendukung gaya hidup aktif, profesional, dan bergaya modern.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+                <!-- Feature Card 1 -->
+                <div class="glass-card p-8 rounded-2xl border border-gray-800 hover:border-ultraOrange-500/50 transition-all duration-300 hover:-translate-y-2 group">
+                    <div class="w-14 h-14 rounded-xl bg-ultraOrange-500/10 border border-ultraOrange-500/30 flex items-center justify-center text-ultraOrange-500 text-2xl mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-mobile-screen-button"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-3">Layar Full Touch 1.99" HD</h4>
+                    <p class="text-gray-400 text-sm leading-relaxed">Tampilan bezel ultra-tipis dengan kejernihan warna tinggi, mudah dibaca bahkan di bawah terik sinar matahari.</p>
+                </div>
+
+                <!-- Feature Card 2 -->
+                <div class="glass-card p-8 rounded-2xl border border-gray-800 hover:border-ultraOrange-500/50 transition-all duration-300 hover:-translate-y-2 group">
+                    <div class="w-14 h-14 rounded-xl bg-ultraOrange-500/10 border border-ultraOrange-500/30 flex items-center justify-center text-ultraOrange-500 text-2xl mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-phone-volume"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-3">Panggilan Bluetooth & Notifikasi</h4>
+                    <p class="text-gray-400 text-sm leading-relaxed">Terima telepon, panggil nomor, dan baca notifikasi WhatsApp, Instagram, & SMS langsung tanpa membuka HP.</p>
+                </div>
+
+                <!-- Feature Card 3 -->
+                <div class="glass-card p-8 rounded-2xl border border-gray-800 hover:border-ultraOrange-500/50 transition-all duration-300 hover:-translate-y-2 group">
+                    <div class="w-14 h-14 rounded-xl bg-ultraOrange-500/10 border border-ultraOrange-500/30 flex items-center justify-center text-ultraOrange-500 text-2xl mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-heart-pulse"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-3">Monitoring Kesehatan 24/7</h4>
+                    <p class="text-gray-400 text-sm leading-relaxed">Dilengkapi sensor presisi untuk memantau Detak Jantung, Kadar Oksigen SpO2, Tekanan Darah, & Kualitas Tidur.</p>
+                </div>
+
+                <!-- Feature Card 4 -->
+                <div class="glass-card p-8 rounded-2xl border border-gray-800 hover:border-ultraOrange-500/50 transition-all duration-300 hover:-translate-y-2 group">
+                    <div class="w-14 h-14 rounded-xl bg-ultraOrange-500/10 border border-ultraOrange-500/30 flex items-center justify-center text-ultraOrange-500 text-2xl mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-person-running"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-3">Multi Sport Mode</h4>
+                    <p class="text-gray-400 text-sm leading-relaxed">Pelacakan otomatis untuk olahraga Lari, Bersepeda, Fitnes, Badminton, dengan perhitungkan kalori & langkah.</p>
+                </div>
+
+                <!-- Feature Card 5 -->
+                <div class="glass-card p-8 rounded-2xl border border-gray-800 hover:border-ultraOrange-500/50 transition-all duration-300 hover:-translate-y-2 group">
+                    <div class="w-14 h-14 rounded-xl bg-ultraOrange-500/10 border border-ultraOrange-500/30 flex items-center justify-center text-ultraOrange-500 text-2xl mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-bolt"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-3">Wireless Magnetic Charging</h4>
+                    <p class="text-gray-400 text-sm leading-relaxed">Pengisian daya nirkabel magnetik modern yang praktis, cepat, aman, dan tahan lama hingga beberapa hari.</p>
+                </div>
+
+                <!-- Feature Card 6 -->
+                <div class="glass-card p-8 rounded-2xl border border-gray-800 hover:border-ultraOrange-500/50 transition-all duration-300 hover:-translate-y-2 group">
+                    <div class="w-14 h-14 rounded-xl bg-ultraOrange-500/10 border border-ultraOrange-500/30 flex items-center justify-center text-ultraOrange-500 text-2xl mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-shield-cat"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-3">Titanium Alloy Tough Body</h4>
+                    <p class="text-gray-400 text-sm leading-relaxed">Bodi berbahan Zinc & Titanium Alloy yang tangguh tahan benturan serta tali strap jam yang dapat diganti-ganti.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Strap Color Switcher Section -->
+    <section id="desain" class="py-20 bg-ultraCard/50 border-y border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                
+                <!-- Left Interactive Preview -->
+                <div class="flex flex-col items-center justify-center space-y-6">
+                    <div class="relative w-full max-w-md h-80 sm:h-96 glass-card rounded-3xl p-6 border border-gray-700 flex items-center justify-center overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-tr from-ultraOrange-500/10 to-transparent pointer-events-none"></div>
+                        <img id="color-preview-img" 
+                             src="https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?q=80&w=700&auto=format&fit=crop" 
+                             alt="T800 Ultra Color Preview" 
+                             class="max-h-72 w-auto object-contain transition-all duration-500 transform hover:scale-105">
+                        <span id="selected-color-badge" class="absolute bottom-4 left-4 bg-ultraOrange-500 text-black font-extrabold text-xs px-4 py-1.5 rounded-full uppercase tracking-wider">
+                            Titanium Orange
+                        </span>
+                    </div>
+
+                    <!-- Color Selector Buttons -->
+                    <div class="flex items-center space-x-4">
+                        <button onclick="changeColor('orange', 'Titanium Orange', 'https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?q=80&w=700&auto=format&fit=crop')" class="color-btn active-color border-2 border-ultraOrange-500 p-1 rounded-full focus:outline-none transition-transform hover:scale-110">
+                            <span class="block w-8 h-8 rounded-full bg-orange-500"></span>
+                        </button>
+                        <button onclick="changeColor('black', 'Midnight Black', 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=700&auto=format&fit=crop')" class="color-btn border-2 border-transparent p-1 rounded-full focus:outline-none transition-transform hover:scale-110">
+                            <span class="block w-8 h-8 rounded-full bg-gray-900 border border-gray-600"></span>
+                        </button>
+                        <button onclick="changeColor('silver', 'Starlight Silver', 'https://images.unsplash.com/photo-1524805444758-089113d48a6d?q=80&w=700&auto=format&fit=crop')" class="color-btn border-2 border-transparent p-1 rounded-full focus:outline-none transition-transform hover:scale-110">
+                            <span class="block w-8 h-8 rounded-full bg-slate-300"></span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Right Description -->
+                <div class="space-y-6">
+                    <h2 class="text-xs uppercase tracking-widest text-ultraOrange-500 font-extrabold">Variasi Gaya Elegan</h2>
+                    <h3 class="text-3xl sm:text-4xl font-extrabold text-white">Tampil Percaya Diri Dalam Setiap Momen</h3>
+                    <p class="text-gray-400 text-base leading-relaxed">
+                        T800 Ultra hadir dengan opsi tali Ocean Strap berbahan silikon gel premium bergelombang yang lentur, tahan keringat, dan sangat nyaman digunakan seharian baik saat berolahraga maupun acara resmi.
+                    </p>
+                    <ul class="space-y-3 text-sm text-gray-300">
+                        <li class="flex items-center space-x-3">
+                            <i class="fa-solid fa-check text-ultraOrange-500"></i>
+                            <span>Bisa diganti dengan tali strap standar 42/44/45/49mm</span>
+                        </li>
+                        <li class="flex items-center space-x-3">
+                            <i class="fa-solid fa-check text-ultraOrange-500"></i>
+                            <span>Layar dengan ratusan pilihan Watch Face kustom</span>
+                        </li>
+                        <li class="flex items-center space-x-3">
+                            <i class="fa-solid fa-check text-ultraOrange-500"></i>
+                            <span>Crown tombol fisik aktif yang dapat diputar</span>
+                        </li>
+                    </ul>
+                    <div class="pt-4">
+                        <button onclick="openOrderModal()" class="orange-gradient-bg text-black font-bold px-6 py-3 rounded-xl text-sm hover:opacity-90 transition-all">
+                            Pilih Warna & Pesan Now
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Technical Specifications Table Section -->
+    <section id="spesifikasi" class="py-20 bg-ultraDark">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-xs uppercase tracking-widest text-ultraOrange-500 font-extrabold mb-2">Spesifikasi Lengkap</h2>
+                <h3 class="text-3xl sm:text-4xl font-extrabold text-white">Detail Teknis T800 Ultra</h3>
+            </div>
+
+            <div class="glass-card rounded-2xl overflow-hidden border border-gray-800">
+                <div class="divide-y divide-gray-800 text-sm">
+                    <div class="grid grid-cols-1 sm:grid-cols-3 p-4 hover:bg-white/5 transition-colors">
+                        <span class="font-bold text-ultraOrange-400">Model Produk</span>
+                        <span class="sm:col-span-2 text-gray-300">T800 Ultra Series 8 (Edisi Terbaru 2026)</span>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-3 p-4 hover:bg-white/5 transition-colors">
+                        <span class="font-bold text-ultraOrange-400">Layar Utam</span>
+                        <span class="sm:col-span-2 text-gray-300">1.99 Inci IPS HD Full Touch Screen (240x283 pixel)</span>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-3 p-4 hover:bg-white/5 transition-colors">
+                        <span class="font-bold text-ultraOrange-400">Konektivitas</span>
+                        <span class="sm:col-span-2 text-gray-300">Bluetooth 5.0 (Kompatibel Android 5.0+ & iOS 9.0+)</span>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-3 p-4 hover:bg-white/5 transition-colors">
+                        <span class="font-bold text-ultraOrange-400">Baterai & Pengisian</span>
+                        <span class="sm:col-span-2 text-gray-300">280mAh Li-ion, Wireless Magnetic Charging (Tahan 2-5 Hari)</span>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-3 p-4 hover:bg-white/5 transition-colors">
+                        <span class="font-bold text-ultraOrange-400">Bodi & Material</span>
+                        <span class="sm:col-span-2 text-gray-300">Zinc Alloy Shell + Titanium Tone Back Panel</span>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-3 p-4 hover:bg-white/5 transition-colors">
+                        <span class="font-bold text-ultraOrange-400">Aplikasi Pendukung</span>
+                        <span class="sm:col-span-2 text-gray-300">HiWatch Pro / FitPro (Tersedia gratis di Play Store & App Store)</span>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-3 p-4 hover:bg-white/5 transition-colors">
+                        <span class="font-bold text-ultraOrange-400">Fitur Tambahan</span>
+                        <span class="sm:col-span-2 text-gray-300">Kamera Remote, Music Controller, Game Bawaan, Alarm, Timer, Find Phone, Kalkulator, Tahan Percikan Air IP67</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Special Offer & Checkout Pricing Card -->
+    <section class="py-20 relative bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-ultraOrange-950/40 via-ultraDark to-black border-y border-ultraOrange-500/30">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="glass-card-orange rounded-3xl p-8 sm:p-12 text-center border-2 border-ultraOrange-500/50 relative overflow-hidden shadow-2xl">
+                
+                <!-- Ribbon Discount Badge -->
+                <div class="absolute top-6 right-6 bg-red-600 text-white font-extrabold text-xs px-4 py-1.5 rounded-full uppercase tracking-wider animate-pulse">
+                    DISKON 50% HARI INI
+                </div>
+
+                <h3 class="text-2xl sm:text-4xl font-extrabold text-white mb-2">PROMO SPESIAL HARI INI!</h3>
+                <p class="text-gray-300 text-sm mb-6">Dapatkan T800 Ultra Smartwatch Original dengan Harga Termurah Sebelum Kehabisan Stok.</p>
+
+                <!-- Countdown Timer -->
+                <div class="mb-8">
+                    <p class="text-xs uppercase tracking-widest text-ultraOrange-400 font-bold mb-3">PROMO BERAKHIR DALAM:</p>
+                    <div class="flex justify-center items-center space-x-3 text-center">
+                        <div class="bg-ultraDark border border-gray-700 px-4 py-2 rounded-xl">
+                            <span id="timer-hours" class="text-2xl sm:text-3xl font-extrabold text-ultraOrange-500">02</span>
+                            <span class="block text-[10px] text-gray-400 uppercase">Jam</span>
+                        </div>
+                        <span class="text-2xl font-bold text-ultraOrange-500">:</span>
+                        <div class="bg-ultraDark border border-gray-700 px-4 py-2 rounded-xl">
+                            <span id="timer-minutes" class="text-2xl sm:text-3xl font-extrabold text-ultraOrange-500">45</span>
+                            <span class="block text-[10px] text-gray-400 uppercase">Menit</span>
+                        </div>
+                        <span class="text-2xl font-bold text-ultraOrange-500">:</span>
+                        <div class="bg-ultraDark border border-gray-700 px-4 py-2 rounded-xl">
+                            <span id="timer-seconds" class="text-2xl sm:text-3xl font-extrabold text-ultraOrange-500">12</span>
+                            <span class="block text-[10px] text-gray-400 uppercase">Detik</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Price Pricing -->
+                <div class="my-6">
+                    <span class="text-gray-500 text-lg sm:text-xl line-through mr-3">Rp 450.000</span>
+                    <span class="text-3xl sm:text-5xl font-extrabold text-white">Rp 149.000</span>
+                    <p class="text-xs text-ultraOrange-400 mt-2 font-semibold">*Bisa Bayar Di Tempat (COD) Seluruh Indonesia</p>
+                </div>
+
+                <button onclick="openOrderModal()" class="w-full sm:w-auto orange-gradient-bg text-black font-extrabold text-lg px-10 py-4 rounded-2xl hover:shadow-2xl hover:shadow-ultraOrange-500/40 transition-all transform hover:scale-105 animate-pulse-glow">
+                    <i class="fa-solid fa-cart-check mr-2"></i> KLAIM PROMO & PESAN SEKARANG
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Customer Reviews / Social Proof -->
+    <section id="ulasan" class="py-20 bg-ultraDark">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-xs uppercase tracking-widest text-ultraOrange-500 font-extrabold mb-2">Ulasan Pembeli</h2>
+                <h3 class="text-3xl sm:text-4xl font-extrabold text-white">Apa Kata Pengguna T800 Ultra?</h3>
+                <div class="flex items-center justify-center space-x-2 mt-4 text-ultraOrange-500 text-lg">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <span class="text-white font-bold text-sm ml-2">4.9 / 5.0 (2,450+ Pembeli Puas)</span>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Review 1 -->
+                <div class="glass-card p-6 rounded-2xl border border-gray-800">
+                    <div class="flex text-ultraOrange-500 text-xs space-x-1 mb-3">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="text-gray-300 text-sm mb-4">"Layar sangat jernih dan sentuhannya responsif banget! Bikin kaget harga 100 ribuan dapet kualitas bodi titanium sekeren ini. Telepon bluetooth juga lancar."</p>
+                    <div class="flex items-center space-x-3 border-t border-gray-800 pt-3">
+                        <div class="w-9 h-9 rounded-full bg-ultraOrange-500/20 text-ultraOrange-400 font-bold flex items-center justify-center text-xs">
+                            AS
+                        </div>
+                        <div>
+                            <h5 class="text-white font-bold text-sm">Aditya Saputra</h5>
+                            <span class="text-gray-500 text-xs">Pembeli Terverifikasi (Jakarta)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 2 -->
+                <div class="glass-card p-6 rounded-2xl border border-gray-800">
+                    <div class="flex text-ultraOrange-500 text-xs space-x-1 mb-3">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="text-gray-300 text-sm mb-4">"Pengiriman COD cepat, seller ramah. Charger wireless-nya praktis banget tinggal tempel. Baterai awet dipake kerja seharian. Pokoknya mantap!"</p>
+                    <div class="flex items-center space-x-3 border-t border-gray-800 pt-3">
+                        <div class="w-9 h-9 rounded-full bg-ultraOrange-500/20 text-ultraOrange-400 font-bold flex items-center justify-center text-xs">
+                            DN
+                        </div>
+                        <div>
+                            <h5 class="text-white font-bold text-sm">Dina Novita</h5>
+                            <span class="text-gray-500 text-xs">Pembeli Terverifikasi (Bandung)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 3 -->
+                <div class="glass-card p-6 rounded-2xl border border-gray-800">
+                    <div class="flex text-ultraOrange-500 text-xs space-x-1 mb-3">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="text-gray-300 text-sm mb-4">"Desainnya mirip banget sama jam mahal jutaan. Tali orange-nya sangat menyala dan nyaman di kulit. Fitur detak jantung & lari bekerja baik."</p>
+                    <div class="flex items-center space-x-3 border-t border-gray-800 pt-3">
+                        <div class="w-9 h-9 rounded-full bg-ultraOrange-500/20 text-ultraOrange-400 font-bold flex items-center justify-center text-xs">
+                            RH
+                        </div>
+                        <div>
+                            <h5 class="text-white font-bold text-sm">Rian Hidayat</h5>
+                            <span class="text-gray-500 text-xs">Pembeli Terverifikasi (Surabaya)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="py-20 bg-ultraCard/40 border-t border-gray-800">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-xs uppercase tracking-widest text-ultraOrange-500 font-extrabold mb-2">Pertanyaan Umum</h2>
+                <h3 class="text-3xl sm:text-4xl font-extrabold text-white">Sering Ditanyakan (FAQ)</h3>
+            </div>
+
+            <div class="space-y-4">
+                <!-- FAQ 1 -->
+                <div class="glass-card rounded-xl border border-gray-800 overflow-hidden">
+                    <button onclick="toggleFaq(this)" class="w-full px-6 py-4 text-left font-bold text-white flex justify-between items-center focus:outline-none">
+                        <span>Apakah T800 Ultra bisa disambungkan ke iPhone & HP Android?</span>
+                        <i class="fa-solid fa-chevron-down text-ultraOrange-500 transition-transform"></i>
+                    </button>
+                    <div class="faq-answer hidden px-6 pb-4 text-gray-400 text-sm">
+                        Ya, T800 Ultra kompatibel dengan semua smartphone Android (minimal versi 5.0) dan iOS/iPhone (minimal versi 9.0) melalui Bluetooth dan aplikasi pendukung HiWatch Pro / FitPro.
+                    </div>
+                </div>
+
+                <!-- FAQ 2 -->
+                <div class="glass-card rounded-xl border border-gray-800 overflow-hidden">
+                    <button onclick="toggleFaq(this)" class="w-full px-6 py-4 text-left font-bold text-white flex justify-between items-center focus:outline-none">
+                        <span>Apakah mendukung sistem Bayar di Tempat (COD)?</span>
+                        <i class="fa-solid fa-chevron-down text-ultraOrange-500 transition-transform"></i>
+                    </button>
+                    <div class="faq-answer hidden px-6 pb-4 text-gray-400 text-sm">
+                        Sangat bisa! Anda dapat memesan terlebih dahulu dan membayar langsung secara cash kepada kurir saat barang sampai di rumah Anda.
+                    </div>
+                </div>
+
+                <!-- FAQ 3 -->
+                <div class="glass-card rounded-xl border border-gray-800 overflow-hidden">
+                    <button onclick="toggleFaq(this)" class="w-full px-6 py-4 text-left font-bold text-white flex justify-between items-center focus:outline-none">
+                        <span>Berapa lama daya tahan baterainya?</span>
+                        <i class="fa-solid fa-chevron-down text-ultraOrange-500 transition-transform"></i>
+                    </button>
+                    <div class="faq-answer hidden px-6 pb-4 text-gray-400 text-sm">
+                        Untuk pemakaian normal sehari-hari baterai dapat bertahan 2 hingga 4 hari. Pengisian daya menggunakan charger magnetic wireless yang sangat cepat (sekitar 1.5 - 2 jam hingga penuh).
+                    </div>
+                </div>
+
+                <!-- FAQ 4 -->
+                <div class="glass-card rounded-xl border border-gray-800 overflow-hidden">
+                    <button onclick="toggleFaq(this)" class="w-full px-6 py-4 text-left font-bold text-white flex justify-between items-center focus:outline-none">
+                        <span>Apakah tali jam (strap) bisa diganti-ganti?</span>
+                        <i class="fa-solid fa-chevron-down text-ultraOrange-500 transition-transform"></i>
+                    </button>
+                    <div class="faq-answer hidden px-6 pb-4 text-gray-400 text-sm">
+                        Bisa. T800 Ultra menggunakan standar ukuran strap jam 42/44/45/49mm sehingga Anda dapat menggantinya dengan berbagai warna dan bahan lain sesuai selera.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Direct WhatsApp Order Modal -->
+    <div id="order-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 opacity-0 pointer-events-none transition-all duration-300">
+        <div class="glass-card rounded-3xl max-w-lg w-full border border-ultraOrange-500/40 p-6 sm:p-8 relative shadow-2xl max-h-[90vh] overflow-y-auto">
+            
+            <button onclick="closeOrderModal()" class="absolute top-5 right-5 text-gray-400 hover:text-white text-xl">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <h3 class="text-2xl font-extrabold text-white mb-2">Form Pemesanan Cepat</h3>
+            <p class="text-xs text-gray-400 mb-6">Isi data di bawah ini untuk pemesanan via WhatsApp / COD.</p>
+
+            <form onsubmit="handleOrderSubmit(event)" class="space-y-4 text-left">
+                <div>
+                    <label class="block text-xs font-bold text-gray-300 uppercase mb-1">Nama Lengkap</label>
+                    <input type="text" id="order-name" required placeholder="Masukkan nama Anda" class="w-full bg-ultraDark border border-gray-700 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-ultraOrange-500">
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-gray-300 uppercase mb-1">Nomor WhatsApp</label>
+                    <input type="tel" id="order-phone" required placeholder="08xxxxxxxxxx" class="w-full bg-ultraDark border border-gray-700 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-ultraOrange-500">
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-gray-300 uppercase mb-1">Alamat Lengkap Pengiriman</label>
+                    <textarea id="order-address" rows="2" required placeholder="Jalan, No. Rumah, RT/RW, Kecamatan, Kota" class="w-full bg-ultraDark border border-gray-700 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-ultraOrange-500"></textarea>
+                </div>
+
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-bold text-gray-300 uppercase mb-1">Pilihan Warna</label>
+                        <select id="order-color" onchange="updateTotalPrice()" class="w-full bg-ultraDark border border-gray-700 rounded-xl px-3 py-3 text-sm text-white focus:outline-none focus:border-ultraOrange-500">
+                            <option value="Titanium Orange">Titanium Orange</option>
+                            <option value="Midnight Black">Midnight Black</option>
+                            <option value="Starlight Silver">Starlight Silver</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-bold text-gray-300 uppercase mb-1">Jumlah Unit</label>
+                        <select id="order-qty" onchange="updateTotalPrice()" class="w-full bg-ultraDark border border-gray-700 rounded-xl px-3 py-3 text-sm text-white focus:outline-none focus:border-ultraOrange-500">
+                            <option value="1">1 Pcs (Rp 149.000)</option>
+                            <option value="2">2 Pcs (Rp 280.000 - Hemat)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-gray-300 uppercase mb-1">Metode Pembayaran</label>
+                    <select id="order-payment" class="w-full bg-ultraDark border border-gray-700 rounded-xl px-3 py-3 text-sm text-white focus:outline-none focus:border-ultraOrange-500">
+                        <option value="COD (Bayar di Tempat)">COD (Bayar di Tempat)</option>
+                        <option value="Transfer Bank">Transfer Bank / E-Wallet</option>
+                    </select>
+                </div>
+
+                <!-- Total Calculation Box -->
+                <div class="bg-ultraOrange-500/10 border border-ultraOrange-500/30 p-4 rounded-xl flex justify-between items-center my-4">
+                    <span class="text-sm font-bold text-white">Total Pembayaran:</span>
+                    <span id="order-total-price" class="text-xl font-extrabold text-ultraOrange-500">Rp 149.000</span>
+                </div>
+
+                <button type="submit" class="w-full orange-gradient-bg text-black font-extrabold py-4 rounded-xl text-base shadow-lg shadow-ultraOrange-500/30 hover:opacity-95 transition-opacity">
+                    <i class="fa-brands fa-whatsapp text-lg mr-2"></i> KIRIM PESANAN SEKARANG
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Sticky Floating CTA for Mobile Screens -->
+    <div class="fixed bottom-0 left-0 w-full glass-card border-t border-gray-800 p-3 z-40 sm:hidden flex items-center justify-between">
+        <div>
+            <span class="text-[10px] text-gray-400 block">Harga Diskon 50%</span>
+            <span class="text-base font-extrabold text-white">Rp 149.000</span>
+        </div>
+        <button onclick="openOrderModal()" class="orange-gradient-bg text-black font-extrabold px-6 py-2.5 rounded-full text-xs shadow-lg shadow-ultraOrange-500/30">
+            Pesan COD
+        </button>
+    </div>
+
+    <!-- Footer Section -->
+    <footer class="bg-black text-gray-500 py-12 border-t border-gray-900 pb-20 sm:pb-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
+            <div class="flex items-center justify-center space-x-3">
+                <div class="w-8 h-8 rounded-lg orange-gradient-bg flex items-center justify-center text-black font-extrabold">
+                    <i class="fa-solid fa-stopwatch text-sm"></i>
+                </div>
+                <span class="text-xl font-extrabold text-white">T800 <span class="orange-glow-text">ULTRA</span></span>
+            </div>
+            <p class="text-xs max-w-md mx-auto text-gray-400">
+                Penyedia Smartwatch T800 Ultra Terpercaya dengan Layanan Garansi Resmi & Bebas Bayar Di Tempat (COD) Seluruh Wilayah Indonesia.
+            </p>
+            <div class="flex justify-center space-x-6 text-xs text-gray-400">
+                <a href="#fitur" class="hover:text-ultraOrange-500">Fitur</a>
+                <a href="#spesifikasi" class="hover:text-ultraOrange-500">Spesifikasi</a>
+                <a href="#faq" class="hover:text-ultraOrange-500">FAQ</a>
+            </div>
+            <p class="text-xs text-gray-600">&copy; 2026 T800 Ultra Official. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Application Logic Script -->
+    <script>
+        // Interactive Color Switcher Logic
+        function changeColor(colorKey, colorName, imgUrl) {
+            const previewImg = document.getElementById("color-preview-img");
+            const colorBadge = document.getElementById("selected-color-badge");
+            const selectOption = document.getElementById("order-color");
+
+            previewImg.src = imgUrl;
+            colorBadge.innerText = colorName;
+            selectOption.value = colorName;
+
+            // Toggle active styling on buttons
+            document.querySelectorAll(".color-btn").forEach(btn => {
+                btn.classList.remove("border-ultraOrange-500", "active-color");
+                btn.classList.add("border-transparent");
+            });
+
+            event.currentTarget.classList.remove("border-transparent");
+            event.currentTarget.classList.add("border-ultraOrange-500", "active-color");
+        }
+
+        // FAQ Toggle Accordion
+        function toggleFaq(btn) {
+            const answer = btn.nextElementSibling;
+            const icon = btn.querySelector("i");
+
+            answer.classList.toggle("hidden");
+            icon.classList.toggle("rotate-180");
+        }
+
+        // Countdown Timer Countdown
+        function startCountdown() {
+            let hours = 2;
+            let minutes = 45;
+            let seconds = 12;
+
+            setInterval(() => {
+                seconds--;
+                if (seconds < 0) {
+                    seconds = 59;
+                    minutes--;
+                    if (minutes < 0) {
+                        minutes = 59;
+                        hours--;
+                        if (hours < 0) hours = 2;
+                    }
+                }
+
+                document.getElementById("timer-hours").innerText = String(hours).padStart(2, '0');
+                document.getElementById("timer-minutes").innerText = String(minutes).padStart(2, '0');
+                document.getElementById("timer-seconds").innerText = String(seconds).padStart(2, '0');
+            }, 1000);
+        }
+
+        // Order Modal Functions
+        function openOrderModal() {
+            const modal = document.getElementById("order-modal");
+            modal.classList.remove("opacity-0", "pointer-events-none");
+            modal.classList.add("opacity-100");
+        }
+
+        function closeOrderModal() {
+            const modal = document.getElementById("order-modal");
+            modal.classList.remove("opacity-100");
+            modal.classList.add("opacity-0", "pointer-events-none");
+        }
+
+        // Auto Total Price Calculation
+        function updateTotalPrice() {
+            const qty = document.getElementById("order-qty").value;
+            const totalPriceElem = document.getElementById("order-total-price");
+
+            if (qty === "1") {
+                totalPriceElem.innerText = "Rp 149.000";
+            } else {
+                totalPriceElem.innerText = "Rp 280.000";
+            }
+        }
+
+        // Handle Form Submission Redirecting to WhatsApp
+        function handleOrderSubmit(e) {
+            e.preventDefault();
+            const name = document.getElementById("order-name").value;
+            const phone = document.getElementById("order-phone").value;
+            const address = document.getElementById("order-address").value;
+            const color = document.getElementById("order-color").value;
+            const qty = document.getElementById("order-qty").value;
+            const payment = document.getElementById("order-payment").value;
+            const total = document.getElementById("order-total-price").innerText;
+
+            const text = `Halo, Saya mau pesan T800 Ultra Smartwatch:%0A%0A- *Nama:* ${name}%0A- *No HP:* ${phone}%0A- *Alamat:* ${address}%0A- *Warna:* ${color}%0A- *Jumlah:* ${qty} Pcs%0A- *Metode Pembayaran:* ${payment}%0A- *Total Harga:* ${total}%0A%0AMohon segera diproses! Terima kasih.`;
+
+            // Open WhatsApp
+            window.open(`https://wa.me/6281234567890?text=${text}`, '_blank');
+            closeOrderModal();
+        }
+
+        // Mobile Menu Toggle
+        document.getElementById("mobile-menu-btn").addEventListener("click", () => {
+            document.getElementById("mobile-menu").classList.toggle("hidden");
+        });
+
+        // Close mobile dropdown when clicking link
+        document.querySelectorAll(".mobile-link").forEach(link => {
+            link.addEventListener("click", () => {
+                document.getElementById("mobile-menu").classList.add("hidden");
+            });
+        });
+
+        // Start Scripts on Page Load
+        window.onload = function() {
+            startCountdown();
+        };
+    </script>
+</body>
+</html>
+```
